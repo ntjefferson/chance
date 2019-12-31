@@ -1,0 +1,5 @@
+required:
+  - numberCharges
+properties:
+  numberCharges:
+    type: "integer"

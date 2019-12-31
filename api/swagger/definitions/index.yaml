@@ -2,3 +2,5 @@ ErrorResponse:
   $ref: ./ErrorResponse.yaml
 SuccessResponse:
   $ref: ./SuccessResponse.yaml
+ChargeData:
+  $ref: ./ChargeData.yaml

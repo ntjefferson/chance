@@ -2,6 +2,13 @@ x-swagger-router-controller: chargeController
 get:
   description: Builds sample charge file for import
   operationId: build
+  parameters:
+    - name: charge
+      description: Charge object
+      in: body
+      required: true
+      schema:
+        $ref: '#/definitions/ChargeData'
   responses:
     '200':
       description: Success

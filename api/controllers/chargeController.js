@@ -6,7 +6,8 @@ const chargeService = require('../services/chargeService');
  * Swagger Controller method for GET /charges/build Endpoint
  */
 function build(req, res) {
-  chargeService.build(10, (err, message) => {
+  const { numberCharges } = req.body;
+  chargeService.build(numberCharges, (err, message) => {
     if (err) {
       res.status(400).json({ code: 400, message: err.message }).end();
     } else {
