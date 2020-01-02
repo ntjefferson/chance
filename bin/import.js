@@ -4,8 +4,8 @@ const program = require("commander");
 const logger = require("../api/helpers/logger");
 
 // Import Functions
-const importFile = require('./import-tools/importFile');
-const insertFile = require('./import-tools/insertFile');
+const importFile = require("./import-tools/importFile");
+const { insertFile } = require("./import-tools/insertFile");
 
 program
   .option("-f, --filename <required>", "filename required")
@@ -20,13 +20,17 @@ process.on("uncaughtException", err => {
 const chargeFile = program.filename;
 
 // Set up import process
-const runImport = async(file) => {
-  console.log(`Importing and reading ${file}...`)
+const runImport = async file => {
+  console.log(`Importing and reading ${file}...`);
   let data = importFile(file);
-  console.log(`Data has been imported, inserting into database...`)
-  await insertFile(data);
-  process.exit(0)
-}
+  if (!Array.isArray(data)) {
+    console.log(data);
+    return process.exit(0);
+  }
+  console.log(`Data has been imported, inserting into database...`);
+  let response = await insertFile(data, "charges");
+  console.log(response)
+  process.exit(0);
+};
 
-runImport(chargeFile)
-
+runImport(chargeFile);

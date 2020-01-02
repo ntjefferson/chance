@@ -12,6 +12,7 @@ INSERT INTO projects(name)
 SELECT 'chance';
 
 -- Charges
+-- To create test table, just change "charges" to "test_charges"
 CREATE TABLE IF NOT EXISTS charges
 (
 	id SERIAL NOT NULL,
