@@ -11,7 +11,7 @@ function build(req, res) {
     if (err) {
       res.status(400).json({ code: 400, message: err.message }).end();
     } else {
-      res.status(200).json({code: 200, message: message }).end();
+      res.status(200).json({ code: 200, message: message }).end();
     }
   });
 }

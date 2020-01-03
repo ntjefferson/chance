@@ -4,3 +4,5 @@ SuccessResponse:
   $ref: ./SuccessResponse.yaml
 ChargeData:
   $ref: ./ChargeData.yaml
+GetCharges:
+  $ref: ./GetCharges.yaml

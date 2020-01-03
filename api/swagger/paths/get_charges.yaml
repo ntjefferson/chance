@@ -1,0 +1,32 @@
+x-swagger-router-controller: getController
+post:
+  description: Gets aggregated charge data
+  operationId: getCharges
+  parameters:
+    - name: appName
+      description: Name of app
+      in: body
+      required: true
+      schema:
+        $ref: '#/definitions/GetCharges'
+  responses:
+    '200':
+      description: Success
+      schema:
+        $ref: '#/definitions/SuccessResponse'
+    '400':
+      description: Bad Request
+      schema:
+        $ref: '#/definitions/ErrorResponse'
+    '401':
+      description: Unauthorized
+      schema:
+        $ref: '#/definitions/ErrorResponse'
+    '403':
+      description: Forbidden
+      schema:
+        $ref: '#/definitions/ErrorResponse'
+    default:
+      description: Error
+      schema:
+        $ref: '#/definitions/ErrorResponse'

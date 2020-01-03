@@ -1,0 +1,5 @@
+required:
+  - appName
+properties:
+  appName:
+    type: "string"

@@ -4,3 +4,4 @@ coverage/*
 *.json
 *.yaml
 Procfile
+client/*

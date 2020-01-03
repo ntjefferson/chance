@@ -1,23 +1,23 @@
-const pgp = require("pg-promise")();
+const pgp = require('pg-promise')();
 
 // Set up DB connection
 let connection;
 if (process.env.NODE_ENV === 'test') {
-    connection = {
-        host: process.env.POSTGRES_HOST,
-        port: 5432,
-        database: process.env.POSTGRES_DB,
-        user: process.env.POSTGRES_USER,
-        password: process.env.POSTGRES_PASSWORD
-      };
+  connection = {
+    host: process.env.POSTGRES_HOST,
+    port: 5432,
+    database: process.env.POSTGRES_DB,
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD
+  };
 } else {
-    connection = {
-        host: "localhost",
-        port: 54321,
-        database: "zylo_chance",
-        user: "user",
-        password: "password"
-      };
+  connection = {
+    host: 'localhost',
+    port: 54321,
+    database: 'zylo_chance',
+    user: 'user',
+    password: 'password'
+  };
 }
 
 
@@ -25,8 +25,8 @@ const db = pgp(connection);
 
 const insertFile = async (data, table) => {
   const cs = new pgp.helpers.ColumnSet(
-    ["amount", "date", "name", "description", "type"],
-    { table }
+    ['amount', 'date', 'name', 'description', 'type'],
+    { table: table }
   );
 
   // Generates bulk insert Postgres query
@@ -36,14 +36,14 @@ const insertFile = async (data, table) => {
   let response;
   await db
     .none(query)
-    .then(res => {
-      response = "Your data has been uploaded to the database!";
+    .then(() => {
+      response = 'Your data has been uploaded to the database!';
     })
-    .catch(err => {
-      response = "There has been an error uploading to the database.";
+    .catch(() => {
+      response = 'There has been an error uploading to the database.';
     });
 
   return response;
 };
 
-module.exports = { insertFile, db };
+module.exports = { insertFile: insertFile, db: db };
